@@ -1,0 +1,4 @@
+Number of diagonal where average element is the biggest = 9 
+Average number = 95.00000
+2 points of this diagonal
+1 2 2 3

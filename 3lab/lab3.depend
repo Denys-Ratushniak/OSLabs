@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1663844998 source:a:\t\3 term\operating systems\3lab\lab3\main.cpp
+	<bits/stdc++.h>
+	<windows.h>
+	<tchar.h>
+

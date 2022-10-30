@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1665664032 source:a:\t\3_term\operating_systems\6lab\6lab\main.cpp
+	<bits/stdc++.h>
+	<windows.h>
+	<tchar.h>
+

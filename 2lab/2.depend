@@ -1,0 +1,35 @@
+# depslib dependency file v1.0
+1662555232 source:a:\t\3 term\operating systems\2lab\1\main.cpp
+	<windows.h>
+	<tchar.h>
+	<stdio.h>
+	"zip.cpp"
+
+1662553401 a:\t\3 term\operating systems\2lab\1\zip.h
+
+1662553400 a:\t\3 term\operating systems\2lab\1\unzip.h
+
+1662554811 a:\t\3 term\operating systems\2lab\1\zip.cpp
+	<windows.h>
+	<stdio.h>
+	<tchar.h>
+	"zip.h"
+
+1663082443 source:a:\t\3 term\operating systems\2lab\2\main.cpp
+	<bits/stdc++.h>
+	<windows.h>
+	<windowsx.h>
+	"commdlg.h"
+	<conio.h>
+	<tlhelp32.h>
+	<tchar.h>
+	<stdio.h>
+
+1662554811 a:\t\3 term\operating systems\2lab\2\zip.cpp
+	<windows.h>
+	<stdio.h>
+	<tchar.h>
+	"zip.h"
+
+1662553401 a:\t\3 term\operating systems\2lab\2\zip.h
+

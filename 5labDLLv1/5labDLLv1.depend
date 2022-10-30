@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1664898788 source:a:\t\3 term\operating systems\5labdllv1\main.cpp
+	<bits/stdc++.h>
+	"lab5dllheader.h"
+
+1664898764 a:\t\3 term\operating systems\5labdllv1\lab5dllheader.h
+	<tchar.h>
+	<windows.h>
+
+1664899311 source:a:\t\3_term\operating_systems\5labdllv1\main.cpp
+	<bits/stdc++.h>
+	"lab5dllheaderv1.h"
+
+1664899213 a:\t\3_term\operating_systems\5labdllv1\lab5dllheader.h
+	<tchar.h>
+	<windows.h>
+
+1664899213 a:\t\3_term\operating_systems\5labdllv1\lab5dllheaderv1.h
+	<tchar.h>
+	<windows.h>
+
