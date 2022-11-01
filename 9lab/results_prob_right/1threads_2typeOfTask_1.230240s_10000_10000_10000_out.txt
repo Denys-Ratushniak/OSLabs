@@ -1,4 +1,0 @@
-Number of diagonal where average element is the biggest = 39996 
-Average number = 8933.00000
-2 points of this diagonal
-9999 1 10000 2

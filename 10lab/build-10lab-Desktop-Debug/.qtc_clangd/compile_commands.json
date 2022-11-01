@@ -24,13 +24,13 @@
         "-DQT_QML_DEBUG",
         "-DQT_CORE_LIB",
         "-I",
-        "/home/denisr2007/QT/OSLabs/9lab/9lab",
+        "/home/denisr2007/QT/OSLabs/10lab/10lab",
         "-I",
         "/usr/include/qt5",
         "-I",
         "/usr/include/qt5/QtCore",
         "-I",
-        "/home/denisr2007/QT/OSLabs/9lab/build-9lab-Desktop-Debug",
+        "/home/denisr2007/QT/OSLabs/10lab/build-10lab-Desktop-Debug",
         "-I",
         "/../lib64/qt5/mkspecs/linux-g++",
         "-isystem",
@@ -55,9 +55,9 @@
         "-Wno-unknown-pragmas",
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
-        "/home/denisr2007/QT/OSLabs/9lab/9lab/main.cpp"
+        "/home/denisr2007/QT/OSLabs/10lab/10lab/main.cpp"
     ],
-    "directory": "/home/denisr2007/QT/OSLabs/9lab/build-9lab-Desktop-Debug/.qtc_clangd",
-    "file": "/home/denisr2007/QT/OSLabs/9lab/9lab/main.cpp"
+    "directory": "/home/denisr2007/QT/OSLabs/10lab/build-10lab-Desktop-Debug/.qtc_clangd",
+    "file": "/home/denisr2007/QT/OSLabs/10lab/10lab/main.cpp"
 }
 ]

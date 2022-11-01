@@ -167,7 +167,7 @@ void calc_points()
 int main()
 {
     #ifdef _WIN32
-    string test_path = "A:\\T\\3_term\\Operating_Systems\\OSLabs\\9lab\\tests\\" + version + "_in.txt";
+    string test_path = "A:\\T\\3_term\\Operating_Systems\\OSLabs\\3lab\\tests\\" + version + "_in.txt";
     #endif
 
     #ifdef __linux__
@@ -228,8 +228,39 @@ int main()
             pDataArray[i].step = step2;
             now2 ++;
         }
+        pthread_attr_t tattr;
+        int ret;
+        sched_param param;
+
+        /* initialized with default attributes */
+        //ret = pthread_attr_init (&tattr);
+
+        /* safe to get existing scheduling param */
+        //ret = pthread_attr_getschedparam (&tattr, &param);
+
+        /* set the priority; others are unchanged */
+
+
+
+        /* setting the new scheduling param */
+
+        if(i == low_priority_thread || i == high_priority_thread){
+//            int inher;
+//            ret = pthread_attr_getinheritsched(&tattr, &inher);
+//            cout << "Inher" << inher << " " << PTHREAD_INHERIT_SCHED << endl;
+//            cout << "Inher" << inher << " " << PTHREAD_EXPLICIT_SCHED << endl;
+//            //ret = pthread_attr_setinheritsched(&tattr, PTHREAD_EXPLICIT_SCHED);
+//            ret = pthread_attr_setschedpolicy(&tattr, SCHED_FIFO);
+            if(i == low_priority_thread ) param.sched_priority = 1;
+
+            if(i == high_priority_thread ) param.sched_priority = 99;
+//            ret = pthread_attr_setschedparam(&tattr, &param);
+            cout << param.sched_priority << endl;
+        }
 
         pthread_create(&dwThreadIdArray[i], NULL, &MyThreadFunction, &pDataArray[i]);
+
+        pthread_setschedparam(dwThreadIdArray[i], SCHED_FIFO, &param);
 
     }
     for(int i = 0; i < needThreads; ++i) pthread_join(dwThreadIdArray[i], NULL);
@@ -254,7 +285,7 @@ int main()
     ld result = (ld)diag[0][ans].first / (ld)diag[0][ans].second;
 
     #ifdef _WIN32
-    string result_path = "A:\\T\\3_term\\Operating_Systems\\OSLabs\\9lab\\results_prob_right\\" + to_string(TOTAL_THREADS);
+    string result_path = "A:\\T\\3_term\\Operating_Systems\\OSLabs\\3lab\\results_prob_right\\" + to_string(TOTAL_THREADS);
     #endif // _WIN32
 
     #ifdef __linux__

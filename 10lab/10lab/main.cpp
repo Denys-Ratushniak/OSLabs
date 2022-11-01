@@ -1,14 +1,15 @@
 #include <bits/stdc++.h>
 
 #include <pthread.h>
-
+#include <semaphore.h>
 using namespace std;
 typedef long long ll;
 typedef long double ld;
 typedef vector< vector<ll> > matrix;
 
 ///HERE YOU CAN CHANGE INPUT
-const int TOTAL_THREADS = 10;
+const int TOTAL_THREADS = 100;
+const int MAX_SEM_COUNT = 10;
 string version = "10000_10000_10000";
 
 ll type_of_task = 2;
@@ -34,6 +35,11 @@ vector < pair<ll,ll> > diag[TOTAL_THREADS];
 
 vector< pair< pair<ll,ll>, pair<ll,ll> > > points_for_diag;
 
+ld threadTime[TOTAL_THREADS];
+pthread_mutex_t mymutex;
+sem_t mysemaphore;
+ll done_threads;
+ll needThreads;
 
 void solve(int sx, int sy, int step, int type, int num)
 {
@@ -73,15 +79,27 @@ void solve(int sx, int sy, int step, int type, int num)
             now += step;
         }
     }
+    ll ans = 0;
+    for(int i = 1 ; i < diag[num].size(); ++i)
+        if(diag[num][i].first * diag[num][ans].second > diag[num][i].second * diag[num][ans].first || diag[num][ans].second == 0) ans = i;
 
+    ld result = (ld)diag[num][ans].first / (ld)diag[num][ans].second;
+    pthread_mutex_lock(&mymutex);
+    cout << "\033[F";
+    cout << "\033[F";
+    cout << "\n";
+    cout << "Tread " << num  << " MaxAverage = " << result << "\n";
+    pthread_mutex_unlock(&mymutex);
 }
-ld threadTime[TOTAL_THREADS];
+
 
 void* MyThreadFunction(void *lpParam){
+    sem_wait(&mysemaphore);
     PMYDATA pDataVar;
 
     pDataVar = (PMYDATA)lpParam;
     MYDATA DataVar = *pDataVar;
+
 
     std::chrono::time_point<std::chrono::system_clock> start, end;
     start = std::chrono::system_clock::now();
@@ -93,6 +111,16 @@ void* MyThreadFunction(void *lpParam){
     ld currtime = elapsed_seconds.count();
 
     threadTime[pDataVar->threadNum] = currtime;
+
+    pthread_mutex_lock(&mymutex);
+
+    done_threads++;
+    cout << "\033[F";
+    cout << "\033[F";
+    cout << fixed << setprecision(3) << 100.0 * double(done_threads) / double(needThreads) << "%\n";
+    pthread_mutex_unlock(&mymutex);
+
+    sem_post(&mysemaphore);
     return NULL;
 }
 
@@ -167,13 +195,15 @@ void calc_points()
 int main()
 {
     #ifdef _WIN32
-    string test_path = "A:\\T\\3_term\\Operating_Systems\\OSLabs\\9lab\\tests\\" + version + "_in.txt";
+    string test_path = "A:\\T\\3_term\\Operating_Systems\\OSLabs\\10lab\\tests\\" + version + "_in.txt";
     #endif
 
     #ifdef __linux__
-    string test_path = "/home/denisr2007/QT/OSLabs/9lab/tests/" + version + "_in.txt";
+    string test_path = "/home/denisr2007/QT/OSLabs/10lab/tests/" + version + "_in.txt";
     #endif
 
+    pthread_mutex_init(&mymutex, NULL);
+    sem_init(&mysemaphore, 0, MAX_SEM_COUNT);
     low_priority_thread %= TOTAL_THREADS;
     high_priority_thread %= TOTAL_THREADS;
     if(low_priority_thread == high_priority_thread) low_priority_thread--;
@@ -181,7 +211,6 @@ int main()
     if(low_priority_thread == TOTAL_THREADS) low_priority_thread = 0;
 
     ifstream input(test_path);
-    cout << test_path << endl;
     ld t0 = clock();
     input >> n >> m >> max_number;
     calc_points();
@@ -203,7 +232,7 @@ int main()
     ll now1 = 0;
     ll now2 = 0;
 
-    ll needThreads = min(ll(n * m), ll(TOTAL_THREADS));
+    needThreads = min(ll(n * m), ll(TOTAL_THREADS));
     ll step2 = needThreads;
 
 
@@ -233,6 +262,9 @@ int main()
 
     }
     for(int i = 0; i < needThreads; ++i) pthread_join(dwThreadIdArray[i], NULL);
+    cout << "\n";
+    pthread_mutex_destroy(&mymutex);
+    sem_destroy(&mysemaphore);
 
     for(int i = 1; i < needThreads; ++i)
     {
@@ -254,11 +286,11 @@ int main()
     ld result = (ld)diag[0][ans].first / (ld)diag[0][ans].second;
 
     #ifdef _WIN32
-    string result_path = "A:\\T\\3_term\\Operating_Systems\\OSLabs\\9lab\\results_prob_right\\" + to_string(TOTAL_THREADS);
+    string result_path = "A:\\T\\3_term\\Operating_Systems\\OSLabs\\10lab\\results_prob_right\\" + to_string(TOTAL_THREADS);
     #endif // _WIN32
 
     #ifdef __linux__
-    string result_path = "/home/denisr2007/QT/OSLabs/9lab/results_prob_right/" + to_string(TOTAL_THREADS);
+    string result_path = "/home/denisr2007/QT/OSLabs/10lab/results_prob_right/" + to_string(TOTAL_THREADS);
     #endif // __linux__
 
     result_path += "threads_" + to_string(type_of_task) + "typeOfTask_" + to_string(dectime) + "s_" + version + "_out.txt";
