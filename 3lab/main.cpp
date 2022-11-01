@@ -15,7 +15,7 @@ ll low_priority_thread = 3;
 ll high_priority_thread = 7;
 
 ///HERE YOU CAN CHANGE INPUT
-const long long mod = 1e9+7;
+
 typedef struct MyData
 {
     int startx, starty, step, type;
@@ -166,7 +166,7 @@ void calc_points()
 
 int main()
 {
-    string test_path = "A:\\T\\3 term\\Operating Systems\\3lab\\tests\\" + version + "_in.txt";
+    string test_path = "A:\\T\\3_term\\Operating_Systems\\OSLabs\\3lab\\tests\\" + version + "_in.txt";
 
     low_priority_thread %= TOTAL_THREADS;
     high_priority_thread %= TOTAL_THREADS;
@@ -279,7 +279,7 @@ int main()
     long long inttime = round(process_time * 100);
     long long dectime = inttime % 100;
     inttime /= 100;
-    string result_path = "A:\\T\\3 term\\Operating Systems\\3lab\\results_prob_right\\" + to_string(TOTAL_THREADS);
+    string result_path = "A:\\T\\3_term\\Operating_Systems\\OSLabs\\3lab\\results_prob_right\\" + to_string(TOTAL_THREADS);
     result_path += "threads_" + to_string(type_of_task) + "typeOfTask_" + to_string(inttime) + "." + to_string(dectime) + "ms_" + version + "_out.txt";
     ofstream output(result_path);
 
