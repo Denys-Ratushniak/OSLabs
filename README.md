@@ -1,7 +1,7 @@
 # OSLabs
 My labs for Operating Systems
 
-Some thing may not work, due to some files are so large to uplodad them to github
+Some thing may not work, due to some files are so large to uplodad them to github(10000_10000_10000.txt file used for large input)
 
 1 - 6 labs Windows WINAPI
 
