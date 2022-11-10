@@ -7,6 +7,8 @@ Some thing may not work, due to some files are so large to uplodad them to githu
 
 7 - 12 Linux Fedora
 
+9, 10, 12 also works on Windows
+
 lab 1,7 - processes overview
 
 lab 2,8 - creating process(archieve a chosen file)
