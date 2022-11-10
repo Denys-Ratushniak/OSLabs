@@ -1,0 +1,9 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+extern void runtask();
+
+int main(){
+  runtask();
+  return 0;
+}
